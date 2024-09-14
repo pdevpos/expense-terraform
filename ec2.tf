@@ -6,7 +6,7 @@ resource "aws_instance" "web" {
     Name = "test"
   }
 }
-resource "aws_security_group" "allow_tls" {
+resource "aws_security_group" "custom_sec_group" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic and all outbound traffic"
   ingress {
