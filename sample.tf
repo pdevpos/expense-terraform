@@ -1,2 +1,2 @@
-resource aws_instance instance{
+resource "aws_instance" "instance"{
     }
