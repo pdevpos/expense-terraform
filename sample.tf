@@ -1,1 +1,2 @@
-Hello
+resource aws_instance instance{
+    }
