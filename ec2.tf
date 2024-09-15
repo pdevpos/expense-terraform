@@ -8,7 +8,7 @@ resource "aws_instance" "web" {
       instance_interruption_behavior = "stop"
     }
     }
-  instance_type = var.instance_name[count.index] == "db" ? "t3.micro" : "t2.micro"
+  instance_type = var.instance_name[count.index] == "db" ? "t2.micro" : "t2.micro"
   vpc_security_group_ids = [aws_security_group.custom_sec_group.id]
   tags = {
     Name = var.tags_name[count.index]
