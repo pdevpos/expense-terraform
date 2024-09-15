@@ -28,3 +28,6 @@ variable "image_id"{
   variable "sg_tag"{
     default = "custome_sg"
   }
+  variable "instance_name"{
+    default = "db"
+  }
