@@ -24,6 +24,6 @@ resource "aws_security_group" "custom_sec_group" {
 
   }
   tags = {
-    Name = var.custom_tag
+    Name = var.sg_tag
   }
 }
