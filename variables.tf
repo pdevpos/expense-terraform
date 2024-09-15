@@ -5,7 +5,7 @@ variable "image_id"{
    default = "t3.micro"
   }
   variable "tags_name"{
-    default = "test"
+    default = ["db","backend","frontend"]
   }
   variable "aws_sg"{
     default = "allow_tls"
@@ -29,5 +29,5 @@ variable "image_id"{
     default = "custome_sg"
   }
   variable "instance_name"{
-    default = "db"
+    default = ["db","backend","frontend"]
   }
