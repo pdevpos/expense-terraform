@@ -1,5 +1,12 @@
 resource "aws_instance" "web" {
   ami           = var.image_id
+  instance_market_options {
+    market_type = "spot"
+    spot_options {
+      spot_instance_type = "persistent"
+      instance_interruption_behavior = "stop"
+    }
+    }
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.custom_sec_group.id]
   tags = {
