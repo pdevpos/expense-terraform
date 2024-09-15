@@ -1,5 +1,5 @@
 resource "aws_instance" "web" {
-  count = len(var.instance_name)
+  count = length(var.instance_name)
   ami           = var.image_id
   instance_market_options {
     market_type = "spot"
