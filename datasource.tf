@@ -5,8 +5,4 @@ filter {
   name   = "name"
   values = ["RHEL-9-DevOps-Practice"]
 }
-filter {
-  name   = "AMI ID"
-  values = ["ami-09c813fb71547fc4f"]
-}
 }
