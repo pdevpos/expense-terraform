@@ -32,10 +32,14 @@ resource "aws_security_group" "allow_tls" {
   }
   tags = var.aws_sg_tag_name
 }
-# resource "aws_route53_record" "aws_route" {
-#   zone_id = local.zone_id
-#   name    = var.instance_name[count.index]
-#   type    = "A"
-#   ttl     = 300
-#   records = [var.instance_name[count.index] == "frontend"? "pdevops72.online" : var.instance_name[count.index].pdevops72.online]
-# }
+resource "aws_route53_record" "aws_route" {
+  count = length(var.instance_name)
+  zone_id = local.zone_id
+  name = [
+      var.instance_name[count.index] == "frontend" ? var.dns_name : "${var.instance_name[count.index]}.${var.dns_name}"
+  ]
+  type    = "A"
+  ttl     = 300
+  records = [
+      var.instance_name[count.index] == "frontend" ? aws_instance.expense[count.index].public_ip : aws_instance.expense[count.index].private_ip]
+}

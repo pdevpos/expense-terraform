@@ -6,3 +6,6 @@
 output "sg_aws" {
   value = aws_security_group.allow_tls
 }
+output "aws_instance"{
+  value = aws_instance.expense
+}
