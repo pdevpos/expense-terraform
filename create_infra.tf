@@ -1,6 +1,6 @@
 resource "aws_instance" "expense" {
   count = length(var.instance_name)
-  ami           = data.aws_ami.get_ami
+  ami           = data.aws_ami.get_ami.id
   instance_market_options {
     market_type = "spot"
     spot_options {
