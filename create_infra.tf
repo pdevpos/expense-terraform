@@ -38,5 +38,5 @@ resource "aws_route53_record" "aws_route" {
   name = var.instance_name[count.index] == "frontend"? var.dns_name : "${var.instance_name[count.index]}.${var.dns_name}"
   type    = "A"
   ttl     = 300
-  records = var.instance_name[count.index] == "frontend" ? aws_instance.expense[count.index].public_ip : aws_instance.expense[count.index].private_ip
+  records = var.instance_name[count.index] == "frontend" ? [aws_instance.expense[count.index].public_ip] : [aws_instance.expense[count.index].private_ip]
 }
