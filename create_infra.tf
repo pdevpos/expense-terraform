@@ -8,7 +8,7 @@ resource "aws_instance" "expense" {
       instance_interruption_behavior = "stop"
     }
   }
-  instance_type = local.instance_type
+  instance_type = var.instance_name[count.index] == "db" ? "t3.micro" : "t2.micro"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   tags = merge(var.tag_name,{
      Name = var.instance_name[count.index]
@@ -32,3 +32,10 @@ resource "aws_security_group" "allow_tls" {
   }
   tags = var.aws_sg_tag_name
 }
+# resource "aws_route53_record" "aws_route" {
+#   zone_id = local.zone_id
+#   name    = var.instance_name[count.index]
+#   type    = "A"
+#   ttl     = 300
+#   records = [var.instance_name[count.index] == "frontend"? "pdevops72.online" : var.instance_name[count.index].pdevops72.online]
+# }
