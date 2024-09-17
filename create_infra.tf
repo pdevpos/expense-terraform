@@ -35,7 +35,7 @@ resource "aws_security_group" "allow_tls" {
 resource "aws_route53_record" "aws_route" {
   count = length(var.instance_name)
   zone_id = local.zone_id
-  name = var.instance_name[count.index] == "frontend"? var.dns_name : "${var.instance_name}.${var.dns_name}"
+  name = var.instance_name[count.index] == "frontend"? "${var.dns_name} : ${var.instance_name}.${var.dns_name}"
   type    = "A"
   ttl     = 300
   records = [
