@@ -4,6 +4,6 @@ resource "aws_route53_record" "aws_route" {
   name    = var.instance_name[count.index]
   type    = "A"
   ttl     = 300
-  records = [var.instance_name[count.index] == "frontend" ? "pdevops72.online" : var.instance_name[count.index].pdevops72.online]
+  records = [var.instance_name[count.index] == "frontend" ? local.dns : var.instance_name[count.index].local.dns]
 }
 
