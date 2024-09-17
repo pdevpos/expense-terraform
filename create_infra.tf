@@ -18,5 +18,17 @@ resource "aws_instance" "expense" {
 resource "aws_security_group" "allow_tls" {
   name        = var.aws_sg_name
   description = var.aws_sg_desc
+  ingress {
+    from_port        = var.from_port
+    to_port          = var.to_port
+    protocol         = var.protocol
+    cidr_blocks      = var.cidr_block
+  }
+  egress {
+    from_port        = local.from_port
+    to_port          = local.to_port
+    protocol         = local.protocol
+    cidr_blocks      = var.cidr_block
+  }
   tags = var.aws_sg_tag_name
 }

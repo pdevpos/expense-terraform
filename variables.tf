@@ -19,3 +19,15 @@ variable "aws_sg_tag_name"{
     Name = "allow_tls"
   }
 }
+variable "from_port"{
+  default = 22
+}
+variable "to_port" {
+  default = 22
+}
+variable "protocol"{
+  default = "tcp"
+}
+variable "cidr_block" {
+  default = ["0.0.0.0/0"]
+}
