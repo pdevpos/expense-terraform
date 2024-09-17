@@ -9,7 +9,7 @@ resource "aws_instance" "expense" {
     }
   }
   instance_type = var.instance_name[count.index] == "db" ? "t3.micro" : "t2.micro"
-  vpc_security_group_ids = [aws_security_group.allow_tls]
+  vpc_security_group_ids = [aws_security_group.allow_tls.id]
   tags = merge(var.tag_name,{
      Name = var.instance_name[count.index]
      Module = var.instance_name[count.index]
