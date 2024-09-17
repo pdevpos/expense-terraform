@@ -9,13 +9,13 @@ resource "aws_instance" "expense" {
     }
   }
   instance_type = var.instance_name[count.index] == "db" ? "t3.micro" : "t2.micro"
-  vpc_security_group_ids = [aws_security_group.allow_tls.id]
+  vpc_security_group_ids = [aws_security_group.sg_group.id]
   tags = merge(var.tag_name,{
      Name = var.instance_name[count.index]
      Module = var.instance_name[count.index]
      })
 }
-resource "aws_security_group" "allow_tls" {
+resource "aws_security_group" "sg_group" {
   name        = var.aws_sg_name
   description = var.aws_sg_desc
   ingress {
