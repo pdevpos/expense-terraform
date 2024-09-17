@@ -31,3 +31,9 @@ variable "protocol"{
 variable "cidr_block" {
   default = ["0.0.0.0/0"]
 }
+variable "route53_names" {
+  default = ["db","backend"]
+}
+variable "dns_name"{
+  default = "pdevops72.online"
+}
